@@ -1,0 +1,21 @@
+{
+    "name": "SkillGame",
+    "rootNamespace": "SkillGame",
+    "references": [
+        "GUID:6477673f8be994b48a6e85882fc488b5",
+        "GUID:68eb14e02adccf44f90c07b64c897ab9",
+        "GUID:c530d534f0e1c4047809055938d824d5",
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:57a6d82589ae03c4cabdc058f719f231"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
