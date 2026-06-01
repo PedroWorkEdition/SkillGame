@@ -1,0 +1,25 @@
+:root {
+	--tab_bg_selected_color: #383838;
+	--tab_bg_hover_color: #303030;
+	--tab_bg_idle_color: #282828;
+}
+
+.tab{
+	background-color: var(--tab_bg_idle_color);
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	border-width: 0;
+	margin: 0;
+}
+
+.tab:hover{
+	background-color: var(--tab_bg_hover_color);
+}
+
+.opened {
+	background-color: var(--tab_bg_selected_color);
+}
+
+.opened:hover {
+	background-color: var(--tab_bg_selected_color);
+}

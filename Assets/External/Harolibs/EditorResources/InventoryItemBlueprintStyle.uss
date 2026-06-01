@@ -1,0 +1,33 @@
+:root {
+	--container_bg_color: #282828;
+	--list_bg_color: #323232;
+	--list_content_bg_color: #464646;
+}
+
+.inventory__property-field {
+	border-left-width: 10px;
+	border-top-width: 5px;
+	border-bottom-width: 5px;
+	border-top-color: var(--container_bg_color);
+	border-bottom-color: var(--container_bg_color);
+}
+
+.inventory__property-field #unity-content {
+	padding: 5px;
+	background-color: var(--list_content_bg_color);
+	border-left-width: 2px;
+	border-top-width: 2px;
+	border-top-color: var(--container_bg_color);
+	border-left-color: var(--container_bg_color);
+	border-top-left-radius: 10px;
+}
+
+.inventory__property-field .unity-foldout {
+	flex-grow: 1;
+}
+
+.unity-foldout__toggle--inspector {
+	margin-left: 0px;
+}
+
+

@@ -1,0 +1,11 @@
+.ds-node__content-text-field {
+	flex-direction: column;
+	min-height: 80px;
+}
+
+.ds-node__content-text-field TextInput {
+	-unity-text-align: upper-left;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	min-width: 160px;
+}
