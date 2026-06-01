@@ -11,12 +11,13 @@ namespace SkillGame {
         [SerializeField] ValueContainerBase<CharacterStatusData> stats;
         [SerializeField] CharacterHealth health;
         [SerializeField] internal Transform model;
-        [SerializeField] internal Rigidbody rb;
+        [SerializeField] internal Rigidbody2D rb;
         [SerializeField] internal Animator animator;
         [SerializeField] float inputBufferAliveTime = .2f;
         [SerializeField] InputBufferCollection inputBufferOverride;
         [SerializeField] StateBehaviourLink[] links;
-        [SerializeField] CharacterBehaviourBase[] behaviours;
+        [SerializeField] string idleStateAnimState;
+        [SerializeField] string lockedStateAnimState;
         [SerializeField] string currentState;
 
         Vector2 _direction;
@@ -30,9 +31,9 @@ namespace SkillGame {
         }
 
         internal Vector2 LastValidDirection { get; private set; } = Vector2.right;
-
         public CharacterStatusData Stats => ( data ? data.Data : CharacterStatusData.Default() ) + 
                                             ( stats ? stats.Value : CharacterStatusData.Default( maxCombo: 0 ) );
+        public CharacterData Data => data;
         public WeaponData Weapon => data ? data.Weapon : null;
 
         internal Camera Cam { get; private set; }

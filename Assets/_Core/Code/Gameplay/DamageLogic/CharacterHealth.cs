@@ -14,11 +14,13 @@ namespace SkillGame {
         [SerializeField] float hurtTime = .5f;
         [SerializeField] float knockBackForce = 10;
         [SerializeField] float invincibilityTime = .75f;
-        [SerializeField] Rigidbody rb;
+        [SerializeField] Rigidbody2D rb;
         [SerializeField] UltEvent onDeath;
         [SerializeField] UltEvent<HealthChangeData> onHealthChanged;
         [SerializeField] UltEvent<HealthDeltaContext> onDamageTaken;
         [SerializeField] UltEvent<HealthDeltaContext> onHealed;
+        [SerializeField] string hurtAnimState;
+        [SerializeField] string deadAnimState;
 
         internal event Action<Character> OnDeath;
         internal bool IsDead => HP == 0;
@@ -52,7 +54,7 @@ namespace SkillGame {
         internal void Initialize( Character character ) {
             this.character = character;
             rb = character.rb;
-            ResetHP( base.character.Stats.HP );
+            ResetHP( base.character.Data ? base.character.Stats.HP : defaultHealth );
             var hurtStateCtx = new StateContext( Character.STATE_HURT, typeof( TimedState ), OnEnterHurtState, OnExitHurtState, hurtTime );
             var deadStateCtx = new StateContext( Character.STATE_DEATH, OnEnterDeathState );
             hurtStateCtx = hurtStateCtx.AddLink( base.character.GetIdleState(), () => true );
@@ -64,7 +66,7 @@ namespace SkillGame {
 
         void OnEnterHurtState() {
             _trigger = false;
-            character.animator.Play( Character.STATE_HURT );
+            character.animator.Play( hurtAnimState );
         }
 
         void OnExitHurtState() {
@@ -74,7 +76,7 @@ namespace SkillGame {
 
         void OnEnterDeathState() {
             character.rb.linearVelocity = Vector3.zero;
-            character.animator.Play( Character.STATE_DEATH );
+            character.animator.Play( deadAnimState );
         }
 
         public override void TakeDamage( DamageContext ctx ) {
@@ -99,7 +101,7 @@ namespace SkillGame {
         void ApplyKnockback( Vector3 knockback ) {
             var camRight = character.Cam.transform.right;
             rb.linearVelocity = new Vector3( knockback.x, 0, knockback.z );
-            _kbTween = DOTween.To( () => rb.linearVelocity, val => rb.linearVelocity = val, Vector3.zero, hurtTime );
+            _kbTween = DOTween.To( () => rb.linearVelocity, val => rb.linearVelocity = val, Vector2.zero, hurtTime );
         }
 
         public void TakeDamage( int dmg ) {

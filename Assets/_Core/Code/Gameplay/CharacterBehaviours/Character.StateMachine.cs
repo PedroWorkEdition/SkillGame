@@ -1,3 +1,4 @@
+using HaroLibs;
 using SkillGame.StateMachineLogic;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,6 @@ namespace SkillGame {
         internal const string STATE_ATTACK = "Attack";
         internal const string STATE_HURT = "Hurt";
         internal const string STATE_DEATH = "Death";
-        internal const string STATE_POWER = "PowerUp";
 
         StateMachine _stateMachine;
         State _idleState;
@@ -24,6 +24,13 @@ namespace SkillGame {
 
         void InitializeStateMachine() {
             _registeredStates = new();
+            GenerateDefaultStates();
+            var behaviours = new HashSet<CharacterBehaviourBase>( links.SelectMany( link => link.AvailableBehaviours ).ToArray() );
+            foreach (var behaiour in behaviours) behaiour.Initialize( this );
+            foreach (var behaiour in behaviours) behaiour.PostInitilize();
+        }
+
+        void GenerateDefaultStates() {
             var idleStateCtx = new StateContext( STATE_IDLE, OnEnterIdleState );
             var lockedStateCtx = new StateContext( STATE_LOCKED, OnEnterLockedState );
             _idleState = RegisterState( idleStateCtx );
@@ -33,17 +40,15 @@ namespace SkillGame {
             _lockState.AddLink( _idleState, () => !_locked );
             _stateMachine = new( _idleState, state => currentState = state.Name );
             RegisterGlobalLink( _lockState, () => _locked );
-            foreach (var behaiour in behaviours) behaiour.Initialize( this );
-            foreach (var behaiour in behaviours) behaiour.PostInitilize();
         }
 
         void OnEnterIdleState() {
-            animator.Play( STATE_IDLE );
+            animator.Play( idleStateAnimState );
             RefreshDirection();
         }
 
         void OnEnterLockedState() {
-            animator.Play( STATE_IDLE );
+            animator.Play( lockedStateAnimState );
             rb.linearVelocity *= 0;
         }
 
@@ -82,8 +87,10 @@ namespace SkillGame {
         [Serializable]
         internal struct StateBehaviourLink {
 
-            public string Name;
+            [Dropdown( nameof( StateList ) )] public string Name;
             public CharacterBehaviourBase[] AvailableBehaviours;
+
+            readonly string[] StateList() => new string[] { STATE_IDLE, STATE_MOVE, STATE_DASH, STATE_ATTACK, STATE_HURT, STATE_DEATH, STATE_LOCKED };
 
         }
 

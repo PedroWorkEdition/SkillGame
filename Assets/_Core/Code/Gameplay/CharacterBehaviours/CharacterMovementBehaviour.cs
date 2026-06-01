@@ -6,10 +6,11 @@ namespace SkillGame {
     public class CharacterMovementBehaviour : CharacterBehaviourBase {
 
         [SerializeField] float speed;
+        [SerializeField] string targetAnimState;
 
         Vector2 _moveInput;
 
-        internal override void Initialize( Character source ) { 
+        internal override void Initialize( Character source ) {
             base.Initialize( source );
             source.DirectionTriggered += SetMovement;
             RegisterState();
@@ -29,13 +30,13 @@ namespace SkillGame {
         }
 
         void OnEnterState() {
-            character.animator.Play( "Move" );
+            character.animator.Play( targetAnimState );
         }
 
         void FixedUpdate() {
             if (!Active) return;
             Vector3 dir = ( character.Cam.transform.right * _moveInput.x ) + ( character.Cam.transform.forward * _moveInput.y );
-            character.rb.linearVelocity = character.Stats.MoveSpeedMultiplier * speed * ( new Vector3( dir.x, 0, dir.z ) ).normalized;
+            character.rb.linearVelocity = character.Stats.MoveSpeedMultiplier * speed * ( new Vector2( dir.x, dir.z ) ).normalized;
         }
 
     }
