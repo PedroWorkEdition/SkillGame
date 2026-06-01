@@ -1,9 +1,10 @@
+using SkillGame.Utils;
 using System;
 using UnityEngine;
 
 namespace SkillGame.Data {
 
-    [CreateAssetMenu( fileName = nameof( CharacterData ), menuName = "Data/" + nameof( CharacterData ) )]
+    [CreateAssetMenu( fileName = nameof( CharacterData ), menuName = SkillGameGlobalsConstants.SOPath + nameof( CharacterData ) )]
     public class CharacterData : ScriptableObject {
 
         [field: SerializeField] public string Name { get; private set; }

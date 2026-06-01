@@ -1,7 +1,12 @@
 {
     "name": "SkillGame.Data",
     "rootNamespace": "SkillGame.Data",
-    "references": [],
+    "references": [
+        "GUID:c530d534f0e1c4047809055938d824d5",
+        "GUID:6477673f8be994b48a6e85882fc488b5",
+        "GUID:57a6d82589ae03c4cabdc058f719f231",
+        "GUID:0caab94c8c0a20b4e83e8dc1e4b2a416"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
