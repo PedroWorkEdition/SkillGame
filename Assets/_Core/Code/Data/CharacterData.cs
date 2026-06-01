@@ -8,7 +8,6 @@ namespace SkillGame.Data {
     public class CharacterData : ScriptableObject {
 
         [field: SerializeField] public string Name { get; private set; }
-        [field: SerializeField] public WeaponData Weapon { get; private set; }
         [field: SerializeField] public CharacterStatusData Data { get; private set; }
 
     }

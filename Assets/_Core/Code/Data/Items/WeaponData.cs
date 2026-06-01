@@ -7,10 +7,12 @@ namespace SkillGame.Data {
     public class WeaponData : ItemData<IEquipableItem> {
 
         [field: SerializeField] public int Damage { get; private set; }
+        [field: SerializeField] public GameObject WeaponPrefab { get; private set; }
         [field: SerializeField] public AttackData[] Attacks { get; private set; }
 
         public override bool Use( Inventory inventory ) {
-            return false;
+            inventory.Holder.EquipWeapon( this );
+            return true;
         }
     }
 }

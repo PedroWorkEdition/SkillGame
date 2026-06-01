@@ -7,7 +7,7 @@ namespace SkillGame.Data {
 
         [field: SerializeField, AutoGUID] public string ID { get; private set; }
         [field: SerializeField] public string ItemName { get; private set; }
-        [field: SerializeField] public string Description { get; private set; }
+        [field: SerializeField, TextArea] public string Description { get; private set; }
         [field: SerializeField] public bool Stackable { get; private set; }
         [field: SerializeField, HideIf( nameof( Stackable ) )] public int MaxStack { get; private set; } = 99;
         [field: SerializeField] public bool ConsumedWhenUsed { get; private set; }

@@ -34,7 +34,7 @@ namespace SkillGame {
         public CharacterStatusData Stats => ( data ? data.Data : CharacterStatusData.Default() ) + 
                                             ( stats ? stats.Value : CharacterStatusData.Default( maxCombo: 0 ) );
         public CharacterData Data => data;
-        public WeaponData Weapon => data ? data.Weapon : null;
+        public WeaponData Weapon { get; internal set; }
 
         internal Camera Cam { get; private set; }
         internal CharacterHealth Health => health;

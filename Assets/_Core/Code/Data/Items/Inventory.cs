@@ -1,21 +1,35 @@
-using HaroLibs;
 using System;
 using UnityEngine;
 
 namespace SkillGame.Data {
 
+    [Serializable]
     public class Inventory {
 
-        [field: SerializeField] public int Slots { get; private set; }
+        [field: SerializeField] public int Size { get; private set; }
 
-        InventorySlot[] _items;
+        InventorySlot[] _slots;
         public IInventoryHolder Holder { get; private set; }
 
         public void Initialize( IInventoryHolder holder ) {
             Holder = holder;
-            _items = new InventorySlot[ Slots ];
-            for (int i = 0; i < Slots; i++)
-                _items[ i ] = new InventorySlot( this );
+            _slots = new InventorySlot[ Size ];
+            for (int i = 0; i < Size; i++)
+                _slots[ i ] = new InventorySlot( this );
+        }
+
+        public bool AddItem( ItemData item ) {
+            for (int i = 0; i < _slots.Length; i++) 
+                if (_slots[ i ].AddOrSet( item ))
+                    return true;
+            return false;
+        }
+
+        public (ItemData data, int amount) RemoveItem( ItemData item, int amount = 1 ) {
+            for (int i = 0; i < _slots.Length; i++)
+                if (_slots[ i ].Item == item)
+                    return _slots[ i ].Remove( amount );
+            return default;
         }
 
     }
@@ -78,7 +92,7 @@ namespace SkillGame.Data {
 
     public interface IInventoryHolder {
 
-
+        void EquipWeapon( WeaponData weapon );
 
     }
 
