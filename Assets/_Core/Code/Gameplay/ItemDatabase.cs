@@ -10,6 +10,7 @@ using UnityEditor;
 
 namespace SkillGame {
 
+    [DefaultExecutionOrder( -100 )]
     public class ItemDatabase : PrivateUniqueSingleton<ItemDatabase> {
 
         [SerializeField, ContextMenuItem( "Load Items", nameof( LoadItems ) )] ItemData[] items;

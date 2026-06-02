@@ -36,6 +36,7 @@ namespace SkillGame.UI {
 
         public void ApplyToCurrentHover( UI_InventorySlot slot ) {
             if (!_hover) {
+                _currentSelected.SetData( previewSlot );
                 previewSlot.Clear();
                 previewSlot.gameObject.SetActive( false );
                 return;

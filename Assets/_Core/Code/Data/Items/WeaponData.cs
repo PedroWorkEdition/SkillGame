@@ -11,6 +11,7 @@ namespace SkillGame.Data {
         [field: SerializeField] public AttackData[] Attacks { get; private set; }
 
         public override bool Use( Inventory inventory ) {
+            if (inventory.Holder == null) return false;
             inventory.Holder.EquipWeapon( this );
             return true;
         }
