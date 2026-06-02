@@ -1,21 +1,30 @@
+using HaroLibs;
+using SkillGame.Utils;
 using System;
 using UnityEngine;
 
 namespace SkillGame.Data {
 
-    [Serializable]
-    public class Inventory {
+    [CreateAssetMenu( fileName = nameof( Inventory ), menuName = SkillGameGlobalsConstants.InventoryPath + nameof( Inventory ), order = 100 )]
+    public class Inventory : ScriptableObject, IScriptableInitializer {
 
         [field: SerializeField] public int Size { get; private set; }
 
         InventorySlot[] _slots;
         public IInventoryHolder Holder { get; private set; }
+        public bool IsInitialized { get; private set; }
 
-        public void Initialize( IInventoryHolder holder ) {
+        public void Initialize( IInventoryHolder holder = null) {
+            if (holder == null || IsInitialized) return;
             Holder = holder;
+            Initialize();
+        }
+
+        public void Initialize() {
             _slots = new InventorySlot[ Size ];
             for (int i = 0; i < Size; i++)
                 _slots[ i ] = new InventorySlot( this );
+            IsInitialized = true;
         }
 
         public bool AddItem( ItemData item, int amount = 1 ) {
@@ -31,6 +40,10 @@ namespace SkillGame.Data {
                     return _slots[ i ].Remove( amount );
             return default;
         }
+
+        public InventorySlot GetSlot( int index ) => _slots.IsInBounds( index ) ? _slots[ index ] : null;
+
+        public void Dispose() { }
 
     }
 

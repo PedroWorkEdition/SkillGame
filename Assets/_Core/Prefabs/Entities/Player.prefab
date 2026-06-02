@@ -617,8 +617,7 @@ MonoBehaviour:
     m_SubObjectType: 
     m_SubObjectGUID: 
     m_EditorAssetChanged: 0
-  inventory:
-    <Size>k__BackingField: 10
+  inventory: {fileID: 11400000, guid: ec6693a521423524d83e74a06d061ffe, type: 2}
 --- !u!114 &1160877992574861609
 MonoBehaviour:
   m_ObjectHideFlags: 0
