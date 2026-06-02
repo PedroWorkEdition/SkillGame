@@ -25,7 +25,7 @@ namespace SkillGame.UI {
         void Start () {
             if (!target || !target.IsInitialized) return;
             for (int i = 0; i < inventorySlots.Length; i++)
-                inventorySlots[ i ].SetData( target.GetSlot( i ) );
+                inventorySlots[ i ].BindSlot( target.GetSlot( i ) );
         }
 
         public void CurrentHover( UI_InventorySlot slot ) => _hover = slot;
@@ -35,14 +35,23 @@ namespace SkillGame.UI {
         }
 
         public void ApplyToCurrentHover( UI_InventorySlot slot ) {
+            if (previewSlot.Data == null) 
+                return;
             if (!_hover) {
                 _currentSelected.SetData( previewSlot );
                 previewSlot.Clear();
                 previewSlot.gameObject.SetActive( false );
                 return;
             }
-            _currentSelected.SetData( _hover );
-            _hover.SetData( previewSlot );
+            if (previewSlot.Data != _hover.Data) {
+                _currentSelected.SetData( _hover );
+                _hover.SetData( previewSlot );
+            } else {
+                var maxDiff = _hover.Data.MaxStack - _hover.Count;
+                _hover.SetData( previewSlot );
+                previewSlot.RemoveAmount( maxDiff );
+                _currentSelected.SetData( previewSlot );
+            }
             previewSlot.gameObject.SetActive( false );
             previewSlot.Clear();
             _currentSelected = null;

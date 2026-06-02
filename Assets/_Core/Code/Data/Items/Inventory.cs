@@ -76,9 +76,14 @@ namespace SkillGame.Data {
         public event Action<ItemData> ItemChanged;
         public event Action<int> CountChanged;
 
-        internal InventorySlot( Inventory source ) => _source = source;
+        public InventorySlot( Inventory source ) => _source = source;
 
-        public bool AddOrSet( ItemData data, int count = 1 ) {
+        public bool AddOrSet( ItemData data, int count ) {
+            if (data == null) {
+                Item = null;
+                Count = 0;
+                return true;
+            }
             if (!Item) {
                 Item = data;
                 Count = count;
@@ -86,18 +91,17 @@ namespace SkillGame.Data {
             }
             if (Item == data) {
                 if (!Item.Stackable || Count >= Item.MaxStack) return false;
-                Count = Mathf.Min( Count + count, Item.MaxStack );
+                var tempCount = Count + count;
+                Count = Mathf.Min( tempCount, Item.MaxStack );
             } else
                 (Item, Count) = (data, count);
             return true;
         }
 
+        public void Set( ItemData data, int count ) => (Item, Count) = (data, count);
+
         public (ItemData data, int amount) Remove( int count = 1 ) {
             if (!Item || count < 1) return default;
-            if (Count < 1) {
-                Item = null;
-                return default;
-            }
             Count -= count;
             var item = Item;
             if (Count < 0) {
@@ -111,6 +115,7 @@ namespace SkillGame.Data {
         public bool ValidateUse() => true;
 
         public bool Use() {
+            if (!_source) return false;
             if (!Item || !Item.Use( _source )) return false;
             if (Item.ConsumedWhenUsed) Remove();
             return true;

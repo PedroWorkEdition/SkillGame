@@ -11,12 +11,21 @@ namespace SkillGame.UI {
 
         [SerializeField] Image icon;
         [SerializeField] TMP_Text amount;
+        [SerializeField] bool localSlot;
 
         InventorySlot _slot;
 
-        public ItemData Data => _slot == null ? null : _slot.Item;
+        public ItemData Data => _slot?.Item;
+        public int Count => _slot?.Count ?? 0;
 
-        internal void SetData( InventorySlot slot ) {
+        public void SetData( ItemData data, int amount ) {
+            if (_slot == null && localSlot)
+                BindSlot( new( null ) );
+            _slot.AddOrSet( data, amount );
+            gameObject.SetActive( true );
+        }
+
+        internal void BindSlot( InventorySlot slot ) {
             if (slot == null) {
                 gameObject.SetActive( false );
                 Clear();
@@ -30,7 +39,7 @@ namespace SkillGame.UI {
             gameObject.SetActive( true );
         }
 
-        public void SetData( UI_InventorySlot slot ) => SetData( slot._slot );
+        public void SetData( UI_InventorySlot slot ) => SetData( slot._slot.Item, slot._slot.Count );
 
         private void ItemChanged( ItemData data ) {
             icon.gameObject.SetActive( data );
@@ -46,14 +55,16 @@ namespace SkillGame.UI {
 
         public void Clear() {
             if (_slot == null) return;
-            _slot.CountChanged -= OnAmountChanged;
-            _slot.ItemChanged -= ItemChanged;
-            _slot = null;
+            RemoveAll();
         }
 
         public void Use() {
             if (_slot == null) return;
             _slot.Use();
+        }
+
+        public void RemoveAmount( int amount ) {
+            _slot.Remove( amount );
         }
 
         public void RemoveAll() {
