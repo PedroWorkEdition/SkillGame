@@ -8,13 +8,14 @@ namespace SkillGame.Data {
     [CreateAssetMenu( fileName = nameof( Inventory ), menuName = SkillGameGlobalsConstants.InventoryPath + nameof( Inventory ), order = 100 )]
     public class Inventory : ScriptableObject, IScriptableInitializer {
 
+        [field: SerializeField, AutoGUID] public string ID { get; private set; }
         [field: SerializeField] public int Size { get; private set; }
 
-        InventorySlot[] _slots;
+        [NonSerialized] InventorySlot[] _slots;
         public IInventoryHolder Holder { get; private set; }
-        public bool IsInitialized { get; private set; }
+        [field: NonSerialized] public bool IsInitialized { get; private set; } = false;
 
-        public void Initialize( IInventoryHolder holder = null) {
+        public void Initialize( IInventoryHolder holder ) {
             if (holder == null || IsInitialized) return;
             Holder = holder;
             Initialize();
@@ -42,6 +43,8 @@ namespace SkillGame.Data {
         }
 
         public InventorySlot GetSlot( int index ) => _slots.IsInBounds( index ) ? _slots[ index ] : null;
+
+        public void Clear() => _slots.ForEach( slot => slot.Clear() );
 
         public void Dispose() { }
 
@@ -110,6 +113,8 @@ namespace SkillGame.Data {
             if (Item.ConsumedWhenUsed) Remove();
             return true;
         }
+
+        public void Clear() => (Item, Count) = (null, 0);
 
     }
 
