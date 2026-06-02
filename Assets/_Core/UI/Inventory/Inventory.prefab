@@ -1794,6 +1794,17 @@ MonoBehaviour:
         _Z: 0
         _W: 0
         _Object: {fileID: 0}
+    - _Target: {fileID: 11400000, guid: ff370c5de3bc8e64586a0fcb92503935, type: 2}
+      _MemberName: SetValue
+      _PersistentArguments:
+      - _Type: 1
+        _Int: 0
+        _String: 
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}
 --- !u!1 &6807548828060977146
 GameObject:
   m_ObjectHideFlags: 0
@@ -3767,6 +3778,10 @@ PrefabInstance:
     - target: {fileID: 3236018241792237221, guid: 5bcb57bcb3a9ebd49abfa5dc67ec11cd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8038328164639663801, guid: 5bcb57bcb3a9ebd49abfa5dc67ec11cd, type: 3}
+      propertyPath: localSlot
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8998846102794696781, guid: 5bcb57bcb3a9ebd49abfa5dc67ec11cd, type: 3}
       propertyPath: m_fontColor.a

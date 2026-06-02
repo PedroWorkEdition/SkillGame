@@ -1,5 +1,144 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &971992929380059729
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7613267963854569861}
+  - component: {fileID: 3585827571217178118}
+  - component: {fileID: 9107887730237884302}
+  m_Layer: 0
+  m_Name: '[input] Inventory'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7613267963854569861
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971992929380059729}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 208745803332263027}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3585827571217178118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971992929380059729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccc0198b73116df449aaf0fc1c25487a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SkillGame::FashionThoughts.InputRelay
+  input: {fileID: 2156179734996234153, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  onStarted:
+    _PersistentCalls: []
+  onPerformed:
+    _PersistentCalls:
+    - _Target: {fileID: 9107887730237884302}
+      _MemberName: Check
+      _PersistentArguments: []
+  onReleased:
+    _PersistentCalls: []
+--- !u!114 &9107887730237884302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971992929380059729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f8fd71efe051874a865426da8b7c7fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HaroLibs::HaroLibs.BoolValueComparer
+  origin:
+    rawValue: 0
+    container: {fileID: 11400000, guid: ff370c5de3bc8e64586a0fcb92503935, type: 2}
+    useContainer: 1
+  compare:
+    rawValue: 0
+    container: {fileID: 0}
+    useContainer: 0
+  then:
+    _PersistentCalls:
+    - _Target: {fileID: 11400000, guid: c9956b992cccb5146814b1dd55104263, type: 2}
+      _MemberName: Raise
+      _PersistentArguments: []
+  else:
+    _PersistentCalls:
+    - _Target: {fileID: 11400000, guid: a09c188966362c34d8ccd168afe65ee1, type: 2}
+      _MemberName: Raise
+      _PersistentArguments: []
+--- !u!1 &1208241516010954384
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7955746635873845556}
+  - component: {fileID: 5656259156694500413}
+  m_Layer: 0
+  m_Name: '[input] Attack'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7955746635873845556
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208241516010954384}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 208745803332263027}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5656259156694500413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208241516010954384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccc0198b73116df449aaf0fc1c25487a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SkillGame::FashionThoughts.InputRelay
+  input: {fileID: 1120369429361536294, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  onStarted:
+    _PersistentCalls: []
+  onPerformed:
+    _PersistentCalls:
+    - _Target: {fileID: 1958304394644372007}
+      _MemberName: TriggerAttack
+      _PersistentArguments: []
+  onReleased:
+    _PersistentCalls: []
 --- !u!1 &1257562484733490996
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,6 +482,74 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &2834138704336550564
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1628882562568260468}
+  - component: {fileID: 8858637584027392338}
+  m_Layer: 0
+  m_Name: '[input] Pause'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1628882562568260468
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2834138704336550564}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 208745803332263027}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8858637584027392338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2834138704336550564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccc0198b73116df449aaf0fc1c25487a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SkillGame::FashionThoughts.InputRelay
+  input: {fileID: -2137991503775385912, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  onStarted:
+    _PersistentCalls: []
+  onPerformed:
+    _PersistentCalls:
+    - _Target: {fileID: 971992929380059729}
+      _MemberName: SetActive
+      _PersistentArguments:
+      - _Type: 1
+        _Int: 0
+        _String: 
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}
+    - _Target: {fileID: 11400000, guid: a09c188966362c34d8ccd168afe65ee1, type: 2}
+      _MemberName: Raise
+      _PersistentArguments: []
+    - _Target: {fileID: 11400000, guid: ff370c5de3bc8e64586a0fcb92503935, type: 2}
+      _MemberName: Toggle
+      _PersistentArguments: []
+  onReleased:
+    _PersistentCalls: []
 --- !u!1 &4834706068995261251
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,6 +587,140 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!1 &4997288308116768205
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3601749960468586501}
+  - component: {fileID: 1849806610706286234}
+  m_Layer: 0
+  m_Name: '[event] GamePaused'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3601749960468586501
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4997288308116768205}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6272259213095076976}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1849806610706286234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4997288308116768205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1128a0665b5cc884785a42ee2a6bd08e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HaroLibs::HaroLibs.BoolValueObserver
+  targetValue:
+    rawValue: 0
+    container: {fileID: 11400000, guid: ff370c5de3bc8e64586a0fcb92503935, type: 2}
+    useContainer: 1
+  onChanged:
+    _PersistentCalls: []
+  manual: 0
+  onEnable: 0
+  invert: 0
+  onTrue:
+    _PersistentCalls:
+    - _Target: {fileID: 9166581798742176647}
+      _MemberName: SetActive
+      _PersistentArguments:
+      - _Type: 1
+        _Int: 0
+        _String: 
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}
+    - _Target: {fileID: 7630808916003041807}
+      _MemberName: SetActive
+      _PersistentArguments:
+      - _Type: 1
+        _Int: 0
+        _String: 
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}
+    - _Target: {fileID: 1208241516010954384}
+      _MemberName: SetActive
+      _PersistentArguments:
+      - _Type: 1
+        _Int: 0
+        _String: 
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}
+  onFalse:
+    _PersistentCalls:
+    - _Target: {fileID: 9166581798742176647}
+      _MemberName: SetActive
+      _PersistentArguments:
+      - _Type: 1
+        _Int: 1
+        _String: 
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}
+    - _Target: {fileID: 7630808916003041807}
+      _MemberName: SetActive
+      _PersistentArguments:
+      - _Type: 1
+        _Int: 1
+        _String: 
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}
+    - _Target: {fileID: 1208241516010954384}
+      _MemberName: SetActive
+      _PersistentArguments:
+      - _Type: 1
+        _Int: 1
+        _String: 
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}
+    - _Target: {fileID: 971992929380059729}
+      _MemberName: SetActive
+      _PersistentArguments:
+      - _Type: 1
+        _Int: 1
+        _String: 
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}
 --- !u!1 &5979610242351729976
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,6 +762,7 @@ Transform:
   - {fileID: 4406979616406983616}
   - {fileID: 4366174796214751404}
   - {fileID: 208745803332263027}
+  - {fileID: 3601749960468586501}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &3710166941163823670
@@ -611,12 +953,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: SkillGame::SkillGame.CharacterInventory
   <Active>k__BackingField: 0
   weaponParent: {fileID: 5861873677329279522}
-  startingWeapon:
-    m_AssetGUID: 
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_SubObjectGUID: 
-    m_EditorAssetChanged: 0
+  startingWeapon: {fileID: 0}
   inventory: {fileID: 11400000, guid: ec6693a521423524d83e74a06d061ffe, type: 2}
 --- !u!114 &1160877992574861609
 MonoBehaviour:
@@ -729,6 +1066,9 @@ Transform:
   m_Children:
   - {fileID: 6932362966752375186}
   - {fileID: 2822736008898883454}
+  - {fileID: 7955746635873845556}
+  - {fileID: 7613267963854569861}
+  - {fileID: 1628882562568260468}
   m_Father: {fileID: 6272259213095076976}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8812352432541875441
