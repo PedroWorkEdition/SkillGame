@@ -14,7 +14,6 @@ namespace SkillGame {
         WeaponData _equipedWeapon;
         GameObject _weaponPrefab;
 
-
         void OnDestroy() {
             if (startingWeapon != null && startingWeapon.IsValid())
                 startingWeapon.ReleaseAsset();
@@ -39,8 +38,6 @@ namespace SkillGame {
             if (_equipedWeapon.WeaponPrefab)
                 _weaponPrefab = Instantiate( _equipedWeapon.WeaponPrefab, weaponParent );
         }
-
-        
 
     }
 

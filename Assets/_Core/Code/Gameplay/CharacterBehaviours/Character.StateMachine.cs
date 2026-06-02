@@ -24,9 +24,13 @@ namespace SkillGame {
 
         void InitializeStateMachine() {
             _registeredStates = new();
+            _behaviourMap = new();
             GenerateDefaultStates();
             var behaviours = new HashSet<CharacterBehaviourBase>( links.SelectMany( link => link.AvailableBehaviours ).ToArray() );
-            foreach (var behaiour in behaviours) behaiour.Initialize( this );
+            foreach (var behaiour in behaviours) { 
+                behaiour.Initialize( this );
+                _behaviourMap.Add( behaiour.GetType(), behaiour );
+            }
             foreach (var behaiour in behaviours) behaiour.PostInitilize();
         }
 

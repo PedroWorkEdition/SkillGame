@@ -1,6 +1,7 @@
-using SkillGame.Data;
 using HaroLibs;
+using SkillGame.Data;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace SkillGame {
@@ -20,6 +21,7 @@ namespace SkillGame {
         [SerializeField] string lockedStateAnimState;
         [SerializeField] string currentState;
 
+        Dictionary<Type, CharacterBehaviourBase> _behaviourMap;
         Vector2 _direction;
         internal Vector2 Direction {
             get => _direction;
@@ -62,6 +64,8 @@ namespace SkillGame {
             _directionBuffer.Update();
             _inputBuffer.Update();
         }
+
+        public T GetBehaviour<T>() where T : CharacterBehaviourBase => _behaviourMap.TryGetValue( typeof( T ), out var behaviour ) ? ( T )behaviour : default;
 
         public void RefreshDirection() => _emptyBuffer.SetCallback( () => DirectionTriggered?.Invoke( _emptyBuffer, Direction ) );
         public void ForceDirection() => DirectionForced?.Invoke( LastValidDirection );

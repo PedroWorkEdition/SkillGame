@@ -79,6 +79,7 @@ GameObject:
   - component: {fileID: 3669401491040280511}
   - component: {fileID: 736757707741098585}
   - component: {fileID: 1341195181273434737}
+  - component: {fileID: 1160877992574861609}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -296,6 +297,19 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   inventory:
     <Size>k__BackingField: 10
+--- !u!114 &1160877992574861609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5979610242351729976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9309b5e0c9d0c14aa401b0fedfb24d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SkillGame::SkillGame.CharacterInteraction
+  <Active>k__BackingField: 0
 --- !u!1 &8180279793121900773
 GameObject:
   m_ObjectHideFlags: 0
