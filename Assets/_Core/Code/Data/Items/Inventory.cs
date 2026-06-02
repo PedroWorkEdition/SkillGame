@@ -34,6 +34,7 @@ namespace SkillGame.Data {
 
     }
 
+    [Serializable]
     public class InventorySlot {
 
         readonly Inventory _source;
@@ -47,15 +48,24 @@ namespace SkillGame.Data {
             }
         }
 
-        public int Count { get; private set; }
+        int _count;
+        public int Count { 
+            get => _count; 
+            private set {
+                _count = value;
+                CountChanged?.Invoke( _count );
+            }
+        }
 
         public event Action<ItemData> ItemChanged;
+        public event Action<int> CountChanged;
 
         internal InventorySlot( Inventory source ) => _source = source;
 
         public bool AddOrSet( ItemData data, int count = 1 ) {
             if (!Item) {
                 Item = data;
+                Count = count;
                 return true;
             }
             if (Item == data && !Item.Stackable) return false;

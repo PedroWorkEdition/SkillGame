@@ -17,6 +17,7 @@ namespace SkillGame {
         [SerializeField] internal Transform model;
         [SerializeField] internal Rigidbody2D rb;
         [SerializeField] internal Animator animator;
+        [SerializeField] private CharacterBehaviourBase[] generalBehaviours;
 
         [Header( "Input Buffer" )]
         [SerializeField] float inputBufferAliveTime = .2f;

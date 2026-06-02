@@ -26,12 +26,16 @@ namespace SkillGame {
             _registeredStates = new();
             _behaviourMap = new();
             GenerateDefaultStates();
+            foreach (var general in generalBehaviours) {
+                general.Initialize( this );
+                _behaviourMap.Add( general.GetType(), general );
+            }
             var behaviours = new HashSet<CharacterBehaviourBase>( links.SelectMany( link => link.AvailableBehaviours ).ToArray() );
             foreach (var behaiour in behaviours) { 
                 behaiour.Initialize( this );
                 _behaviourMap.Add( behaiour.GetType(), behaiour );
             }
-            foreach (var behaiour in behaviours) behaiour.PostInitilize();
+            foreach (var behaiour in _behaviourMap.Values) behaiour.PostInitilize();
         }
 
         void GenerateDefaultStates() {

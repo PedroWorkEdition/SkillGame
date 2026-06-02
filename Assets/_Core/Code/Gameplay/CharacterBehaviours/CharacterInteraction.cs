@@ -1,8 +1,12 @@
 using System.Collections.Generic;
+using UltEvents;
+using UnityEngine;
 
 namespace SkillGame {
 
     public class CharacterInteraction : CharacterBehaviourBase {
+
+        [SerializeField] UltEvent<string> onInteractableChanged;
 
         List<Interactable> _interactables;
 
@@ -18,8 +22,18 @@ namespace SkillGame {
             _interactables[ 0 ].Interact( this );
         }
 
-        public void RegisterInteractable( Interactable interactable ) => _interactables.Add( interactable );
-        public void UnregisterInteractable( Interactable interactable ) => _interactables.Remove( interactable );
+        void UpdateInteraction() =>
+            onInteractableChanged?.Invoke( _interactables.Count == 0 ? string.Empty : _interactables[0].GetInteractionText() );
+
+        public void RegisterInteractable( Interactable interactable ) { 
+            _interactables.Add( interactable );
+            UpdateInteraction();
+        }
+
+        public void UnregisterInteractable( Interactable interactable ) { 
+            _interactables.Remove( interactable );
+            UpdateInteraction();
+        }
     }
 
 }

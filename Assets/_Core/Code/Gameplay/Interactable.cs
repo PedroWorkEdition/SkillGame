@@ -18,6 +18,8 @@ namespace SkillGame {
             interaction.UnregisterInteractable( this );
         }
 
+        public virtual string GetInteractionText() => interactionText;
+
     }
 
 }

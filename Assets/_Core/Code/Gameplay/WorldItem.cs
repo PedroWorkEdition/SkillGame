@@ -16,7 +16,7 @@ namespace SkillGame {
 
         private void OnValidate() {
 #if UNITY_EDITOR
-            if (targetItem == null) return;
+            if (!targetItem.RuntimeKeyIsValid()) return;
             icon.sprite = targetItem.editorAsset.Icon;
 #endif
         }
@@ -30,15 +30,16 @@ namespace SkillGame {
 
         public override void Interact( CharacterInteraction source ) {
             if (!source.Character.TryGetBehaviour<CharacterInventory>( out var inventory ) || !_loadedData) return;
-            gameObject.SetActive( !inventory.AddItem( _loadedData ) );
+            gameObject.SetActive( !inventory.AddItem( _loadedData, amount ) );
         }
 
         void LoadData( AsyncOperationHandle<ItemData> handler ) {
             if (handler.Status == AsyncOperationStatus.Failed) return;
             _loadedData = handler.Result;
+            icon.sprite = _loadedData.Icon;
         }
 
-        public string GetInteractableText() => string.Format( interactionText, amount, _loadedData.ItemName );
+        public override string GetInteractionText() => string.Format( interactionText, amount, _loadedData.ItemName );
 
     }
 

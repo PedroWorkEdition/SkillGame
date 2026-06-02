@@ -22,7 +22,8 @@ namespace SkillGame {
         internal override void Initialize( Character source ) {
             base.Initialize( source );
             inventory.Initialize( this );
-            startingWeapon.LoadAssetAsync().Completed += StartingWeaponOperationCompleted;
+            if (startingWeapon.RuntimeKeyIsValid())
+                startingWeapon.LoadAssetAsync().Completed += StartingWeaponOperationCompleted;
         }
 
         private void StartingWeaponOperationCompleted( AsyncOperationHandle<WeaponData> handle ) {

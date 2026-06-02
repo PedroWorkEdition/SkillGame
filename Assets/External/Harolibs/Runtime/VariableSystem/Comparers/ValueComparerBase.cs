@@ -10,9 +10,9 @@ namespace HaroLibs {
 
         [SerializeField] protected ValueField<T> origin, compare;
 
-        [SerializeField] UltEvent then, @else;
+        [SerializeField] UltEvent<T> then, @else;
 
-        public void Check() => ( Validate() ? then : @else )?.Invoke();
+        public void Check() => ( Validate() ? then : @else )?.Invoke( origin );
         public void Check( T val ) {
             SetValue( val );
             Check();
