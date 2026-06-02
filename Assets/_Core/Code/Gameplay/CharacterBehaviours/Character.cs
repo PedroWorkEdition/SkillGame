@@ -8,17 +8,25 @@ namespace SkillGame {
 
     public partial class Character : MonoBehaviour {
 
+        [Header( "Optional Data" )]
         [SerializeField] CharacterData data;
         [SerializeField] ValueContainerBase<CharacterStatusData> stats;
         [SerializeField] CharacterHealth health;
+
+        [Header( "Obligatory Components" )]
         [SerializeField] internal Transform model;
         [SerializeField] internal Rigidbody2D rb;
         [SerializeField] internal Animator animator;
+
+        [Header( "Input Buffer" )]
         [SerializeField] float inputBufferAliveTime = .2f;
         [SerializeField] InputBufferCollection inputBufferOverride;
+
+        [Header( "State Machine Data" )]
         [SerializeField] StateBehaviourLink[] links;
         [SerializeField] string idleStateAnimState;
         [SerializeField] string lockedStateAnimState;
+        [Header( "Debug" )]
         [SerializeField] string currentState;
 
         Dictionary<Type, CharacterBehaviourBase> _behaviourMap;
@@ -66,6 +74,7 @@ namespace SkillGame {
         }
 
         public T GetBehaviour<T>() where T : CharacterBehaviourBase => _behaviourMap.TryGetValue( typeof( T ), out var behaviour ) ? ( T )behaviour : default;
+        public bool TryGetBehaviour<T>( out T behaviour ) where T : CharacterBehaviourBase => behaviour = GetBehaviour<T>();
 
         public void RefreshDirection() => _emptyBuffer.SetCallback( () => DirectionTriggered?.Invoke( _emptyBuffer, Direction ) );
         public void ForceDirection() => DirectionForced?.Invoke( LastValidDirection );

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace SkillGame {
+
     public class CharacterInteraction : CharacterBehaviourBase {
 
         List<Interactable> _interactables;
