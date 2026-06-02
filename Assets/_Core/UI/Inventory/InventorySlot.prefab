@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8508676199368254669}
   - component: {fileID: 2476237418648660798}
   - component: {fileID: 4076366022764112745}
-  - component: {fileID: 6487236648762140185}
   - component: {fileID: 8038328164639663801}
   - component: {fileID: 7123257718605321059}
   m_Layer: 5
@@ -123,33 +122,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2476237418648660798}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6487236648762140185}
-        m_TargetAssemblyTypeName: UltEvents.UltEventHolder, Kybernetik.UltEvents
-        m_MethodName: Invoke
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &6487236648762140185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3050596719862645849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 289ff940279d54e4e92f632d7d3823dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Kybernetik.UltEvents::UltEvents.UltEventHolder
-  _Event:
-    _PersistentCalls: []
+      m_Calls: []
 --- !u!114 &8038328164639663801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,19 +153,91 @@ MonoBehaviour:
   - eventID: 0
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: SkillGame.UI.UI_InventoryView, SkillGame.UI
+          m_MethodName: CurrentHover
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8038328164639663801}
+            m_ObjectArgumentAssemblyTypeName: SkillGame.UI.UI_InventorySlot, SkillGame.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 1
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: SkillGame.UI.UI_InventoryView, SkillGame.UI
+          m_MethodName: RemoveHover
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8038328164639663801}
+            m_ObjectArgumentAssemblyTypeName: SkillGame.UI.UI_InventorySlot, SkillGame.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 13
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: SkillGame.UI.UI_InventorySlot, SkillGame.UI
+          m_MethodName: SetData
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8038328164639663801}
+            m_ObjectArgumentAssemblyTypeName: SkillGame.UI.UI_InventorySlot, SkillGame.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: SkillGame.UI.UI_InventoryView, SkillGame.UI
+          m_MethodName: SetSelected
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8038328164639663801}
+            m_ObjectArgumentAssemblyTypeName: SkillGame.UI.UI_InventorySlot, SkillGame.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 8038328164639663801}
+          m_TargetAssemblyTypeName: SkillGame.UI.UI_InventorySlot, SkillGame.UI
+          m_MethodName: Clear
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 14
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: SkillGame.UI.UI_InventoryView, SkillGame.UI
+          m_MethodName: ApplyToCurrentHover
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: SkillGame.UI.UI_InventorySlot, SkillGame.UI
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &6784572614965947274
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,7 +297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

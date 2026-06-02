@@ -10,6 +10,7 @@ namespace SkillGame {
         [SerializeField] int amount = 1;
 
         public bool Use( Inventory source ) {
+            if (source.Holder == null) return false;
             var holder = source.Holder as CharacterInventory;
             if (!holder.Character || !holder.Character.Health) return false;
             holder.Character.Health.Heal( amount );

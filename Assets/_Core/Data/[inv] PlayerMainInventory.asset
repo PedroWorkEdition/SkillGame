@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: '[inv] PlayerMainInventory'
   m_EditorClassIdentifier: SkillGame.Data::SkillGame.Data.Inventory
   <ID>k__BackingField: 71caba96435ca0a49ac71e32446bc48f
-  <Size>k__BackingField: 12
+  <Size>k__BackingField: 10
