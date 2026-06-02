@@ -39,6 +39,9 @@ namespace SkillGame {
                 _weaponPrefab = Instantiate( _equipedWeapon.WeaponPrefab, weaponParent );
         }
 
+        public bool AddItem( ItemData data, int amount = 1 ) => inventory.AddItem( data, amount );
+        public (ItemData item, int count) RemoveItem( ItemData data, int amount = 1 ) => inventory.RemoveItem( data, amount );
+
     }
 
 }

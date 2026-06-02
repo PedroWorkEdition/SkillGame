@@ -18,9 +18,9 @@ namespace SkillGame.Data {
                 _slots[ i ] = new InventorySlot( this );
         }
 
-        public bool AddItem( ItemData item ) {
+        public bool AddItem( ItemData item, int amount = 1 ) {
             for (int i = 0; i < _slots.Length; i++) 
-                if (_slots[ i ].AddOrSet( item ))
+                if (_slots[ i ].AddOrSet( item, amount ))
                     return true;
             return false;
         }
