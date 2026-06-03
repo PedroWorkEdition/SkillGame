@@ -22,7 +22,25 @@ MonoBehaviour:
   <Actions>k__BackingField: []
   <Damage>k__BackingField: 5
   <WeaponPrefab>k__BackingField: {fileID: 6858073113399363410, guid: 4e3795626e534aa419fd1f402f116b45, type: 3}
-  <Attacks>k__BackingField: []
+  <Attacks>k__BackingField:
+  - State: Attack_1
+    UseKnockback: 0
+    KnockbackStrength: 0
+    DamageMultiplier: 0
+    ColliderEnableTime: 0.6
+    ColliderDisableTime: 0.8
+    ComboTriggerStart: 1
+    ComboTriggerEnd: 1
+    FinishedTime: 1
+    SpeedMultiplier:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 0
+      m_PostInfinity: 0
+      m_RotationOrder: 0
+    OverrideRange: 0
+    CustomRange: 0
+    OverrideCollider: {fileID: 0}
   references:
     version: 2
     RefIds: []

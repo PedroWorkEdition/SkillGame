@@ -282,6 +282,38 @@ MonoBehaviour:
         _W: 0
         _Object: {fileID: 0}
   comparison: 4
+--- !u!1 &1789635783739102832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2772621599386471792}
+  m_Layer: 0
+  m_Name: Colliders
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2772621599386471792
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1789635783739102832}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7914119731218150193}
+  m_Father: {fileID: 6272259213095076976}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2260440686263510594
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,6 +582,139 @@ MonoBehaviour:
       _PersistentArguments: []
   onReleased:
     _PersistentCalls: []
+--- !u!1 &3530191244170836226
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7914119731218150193}
+  - component: {fileID: 4582290961762137762}
+  - component: {fileID: 1276807027731805641}
+  - component: {fileID: 811636204336479828}
+  m_Layer: 10
+  m_Name: DefaultDamageCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &7914119731218150193
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3530191244170836226}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2772621599386471792}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &4582290961762137762
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3530191244170836226}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0.875, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.75, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &1276807027731805641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3530191244170836226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a1e30ebcc5b54a46b03e6fcc412144f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SkillGame::SkillGame.DamageTrigger
+  source: {fileID: 4582290961762137762}
+  onHitDamageble:
+    _PersistentCalls:
+    - _Target: {fileID: 811636204336479828}
+      _MemberName: DamagebleHit
+      _PersistentArguments:
+      - _Type: 14
+        _Int: 0
+        _String: SkillGame.Damageble, SkillGame, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}
+      - _Type: 14
+        _Int: 1
+        _String: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}
+--- !u!114 &811636204336479828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3530191244170836226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed988a73e1b73e4449f0f76952b9179d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SkillGame::SkillGame.DamageColliderController
+  targetCollider: {fileID: 4582290961762137762}
+  customAttackData: 0
+  damage: 0
+  useKnockback: 0
+  knockbackStrength: 0
 --- !u!1 &4834706068995261251
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,7 +903,8 @@ GameObject:
   - component: {fileID: 736757707741098585}
   - component: {fileID: 1341195181273434737}
   - component: {fileID: 1160877992574861609}
-  m_Layer: 0
+  - component: {fileID: 3463026841882007552}
+  m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -759,6 +925,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5852581420250614031}
+  - {fileID: 2772621599386471792}
   - {fileID: 4406979616406983616}
   - {fileID: 4366174796214751404}
   - {fileID: 208745803332263027}
@@ -901,11 +1068,13 @@ MonoBehaviour:
     - {fileID: 3669401491040280511}
     - {fileID: 736757707741098585}
     - {fileID: 1160877992574861609}
+    - {fileID: 3463026841882007552}
   - Name: Moving
     AvailableBehaviours:
     - {fileID: 3669401491040280511}
     - {fileID: 736757707741098585}
     - {fileID: 1160877992574861609}
+    - {fileID: 3463026841882007552}
   idleStateAnimState: Idle
   lockedStateAnimState: Idle
   currentState: 
@@ -981,6 +1150,22 @@ MonoBehaviour:
         _Z: 0
         _W: 0
         _Object: {fileID: 0}
+--- !u!114 &3463026841882007552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5979610242351729976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99717ea1e53126e42bfc921be42223d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: SkillGame::SkillGame.CharacterAttackBehaviour
+  <Active>k__BackingField: 0
+  defaultCollider: {fileID: 811636204336479828}
+  defaultRange: 1
+  moveSpeed: 10
 --- !u!1 &7630808916003041807
 GameObject:
   m_ObjectHideFlags: 0
