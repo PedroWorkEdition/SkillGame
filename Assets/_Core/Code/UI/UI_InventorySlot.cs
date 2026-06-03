@@ -19,6 +19,12 @@ namespace SkillGame.UI {
         public int Count => _slot?.Count ?? 0;
         public InventorySlot BindedSlot => _slot;
 
+        private void OnDestroy() {
+            if (_slot == null) return;
+            _slot.CountChanged -= OnAmountChanged;
+            _slot.ItemChanged -= ItemChanged;
+        }
+
         public void SetData( ItemData data, int amount ) {
             if (_slot == null && localSlot)
                 BindSlot( new( null ) );

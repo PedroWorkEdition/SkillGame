@@ -582,6 +582,64 @@ MonoBehaviour:
       _PersistentArguments: []
   onReleased:
     _PersistentCalls: []
+--- !u!1 &3312831513806319708
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1182974940242644118}
+  - component: {fileID: 2492630699479464372}
+  m_Layer: 9
+  m_Name: '[event] DamagePlayer'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1182974940242644118
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3312831513806319708}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6272259213095076976}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2492630699479464372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3312831513806319708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28e27224607d23844acb4012b96a7b52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: HaroLibs::HaroLibs.EventSignalListener
+  targetSignal: {fileID: 11400000, guid: 6bb2e78d0d5698d4eb8918abd2daecce, type: 2}
+  targetEvent:
+    _PersistentCalls:
+    - _Target: {fileID: 4018668132635201411}
+      _MemberName: TakeDamage
+      _PersistentArguments:
+      - _Type: 3
+        _Int: 1
+        _String: 
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}
 --- !u!1 &3530191244170836226
 GameObject:
   m_ObjectHideFlags: 0
@@ -930,6 +988,7 @@ Transform:
   - {fileID: 4366174796214751404}
   - {fileID: 208745803332263027}
   - {fileID: 3601749960468586501}
+  - {fileID: 1182974940242644118}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &3710166941163823670
@@ -1016,9 +1075,24 @@ MonoBehaviour:
   invincibilityTime: 0.75
   rb: {fileID: 0}
   onDeath:
-    _PersistentCalls: []
+    _PersistentCalls:
+    - _Target: {fileID: 11400000, guid: e1dfbfffb85308343a7225ecfbe8d6e4, type: 2}
+      _MemberName: Raise
+      _PersistentArguments: []
   onHealthChanged:
-    _PersistentCalls: []
+    _PersistentCalls:
+    - _Target: {fileID: 11400000, guid: f2216d62f2402fa49a9792d1468b47df, type: 2}
+      _MemberName: Emmit
+      _PersistentArguments:
+      - _Type: 14
+        _Int: 0
+        _String: SkillGame.Data.HealthChangeData, SkillGame.Data, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}
   onDamageTaken:
     _PersistentCalls: []
   onHealed:

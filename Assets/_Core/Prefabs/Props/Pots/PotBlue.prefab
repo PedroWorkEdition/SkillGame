@@ -118,6 +118,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8485391599608532830, guid: 50c97c51051beb74abdc79bde70c4bf3, type: 3}
+      propertyPath: onDamaged._PersistentCalls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8485391599608532830, guid: 50c97c51051beb74abdc79bde70c4bf3, type: 3}
+      propertyPath: onDamaged._PersistentCalls.Array.data[3]._Target
+      value: 
+      objectReference: {fileID: 11400000, guid: 6bb2e78d0d5698d4eb8918abd2daecce, type: 2}
+    - target: {fileID: 8485391599608532830, guid: 50c97c51051beb74abdc79bde70c4bf3, type: 3}
+      propertyPath: onDamaged._PersistentCalls.Array.data[3]._MemberName
+      value: Raise
+      objectReference: {fileID: 0}
+    - target: {fileID: 8485391599608532830, guid: 50c97c51051beb74abdc79bde70c4bf3, type: 3}
+      propertyPath: onDamaged._PersistentCalls.Array.data[3]._PersistentArguments.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8485391599608532830, guid: 50c97c51051beb74abdc79bde70c4bf3, type: 3}
+      propertyPath: onDamaged._PersistentCalls.Array.data[3]._PersistentArguments.Array.data[0]._Int
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8485391599608532830, guid: 50c97c51051beb74abdc79bde70c4bf3, type: 3}
+      propertyPath: onDamaged._PersistentCalls.Array.data[3]._PersistentArguments.Array.data[0]._Type
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
