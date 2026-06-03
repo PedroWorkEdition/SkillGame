@@ -110,8 +110,7 @@ namespace SkillGame.Data {
                 if (!Item.Stackable || Count >= Item.MaxStack) return false;
                 var tempCount = Count + count;
                 Count = Mathf.Min( tempCount, Item.MaxStack );
-            } else
-                (Item, Count) = (data, count);
+            }
             return true;
         }
 
