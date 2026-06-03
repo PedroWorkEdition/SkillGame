@@ -120,7 +120,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9008382006199291728}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 8b8d0969bea434c4ea42d6756076cc69, type: 2}
+        m_TargetAssemblyTypeName: HaroLibs.EmptyEventSignal, HaroLibs
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &673985500564990225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1247,6 +1259,7 @@ GameObject:
   - component: {fileID: 319422257451366530}
   - component: {fileID: 8429376775481763584}
   - component: {fileID: 5629024894915496184}
+  - component: {fileID: 7675380272744786942}
   m_Layer: 5
   m_Name: Start
   m_TagString: Untagged
@@ -1355,7 +1368,40 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8429376775481763584}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7675380272744786942}
+        m_TargetAssemblyTypeName: UltEvents.UltEventHolder, Kybernetik.UltEvents
+        m_MethodName: Invoke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7675380272744786942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8839451571369810917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 289ff940279d54e4e92f632d7d3823dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Kybernetik.UltEvents::UltEvents.UltEventHolder
+  _Event:
+    _PersistentCalls:
+    - _Target: {fileID: 0}
+      _MemberName: SkillGame.Utils.PersistentSystem, SkillGame.Utils, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null.ClearSaveFile
+      _PersistentArguments: []
+    - _Target: {fileID: 11400000, guid: 8b8d0969bea434c4ea42d6756076cc69, type: 2}
+      _MemberName: Raise
+      _PersistentArguments: []
 --- !u!1 &8863444412862672870
 GameObject:
   m_ObjectHideFlags: 0
