@@ -40,6 +40,12 @@ namespace SkillGame.Data {
             return false;
         }
 
+        public (ItemData data, int amount) RemoveItem( InventorySlot slot, int amount = 1 ) {
+            var result = slot.Remove( amount );
+            onItemRemoved?.Invoke( result.data );
+            return result;
+        }
+
         public (ItemData data, int amount) RemoveItem( ItemData item, int amount = 1 ) {
             for (int i = 0; i < _slots.Length; i++)
                 if (_slots[ i ].Item == item) {

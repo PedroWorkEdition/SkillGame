@@ -17,6 +17,7 @@ namespace SkillGame.UI {
 
         public ItemData Data => _slot?.Item;
         public int Count => _slot?.Count ?? 0;
+        public InventorySlot BindedSlot => _slot;
 
         public void SetData( ItemData data, int amount ) {
             if (_slot == null && localSlot)
@@ -68,7 +69,6 @@ namespace SkillGame.UI {
             if (_slot == null) return;
             _slot.Clear();
         }
-
     }
 
 }

@@ -3,8 +3,7 @@ using UnityEngine;
 
 namespace SkillGame {
 
-    public class WorldItem : Interactable {// this only works for this project, as it is a 1 scene game
-        // Ideally i want to have a global asset loader for the SOs
+    public class WorldItem : Interactable {
 
         [SerializeField] ItemData targetItem;
         [SerializeField, Min( 1 )] int amount = 1;
@@ -17,14 +16,20 @@ namespace SkillGame {
 #endif
         }
 
-        private void Awake() => icon.sprite = targetItem.Icon;
+        private void Awake() => icon.sprite = targetItem ? targetItem.Icon : null;
+
+        public void SetData( ItemData data, int amount ) {
+            targetItem = data;
+            this.amount = amount;
+            icon.sprite = targetItem.Icon;
+        }
 
         public override void Interact( CharacterInteraction source ) {
             if (!source.Character.TryGetBehaviour<CharacterInventory>( out var inventory ) || !targetItem) return;
             gameObject.SetActive( !inventory.AddItem( targetItem, amount ) );
         }
 
-        public override string GetInteractionText() => string.Format( interactionText, amount, targetItem.ItemName );
+        public override string GetInteractionText() => targetItem ? string.Format( interactionText, amount, targetItem.ItemName ) : string.Empty;
 
     }
 

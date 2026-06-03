@@ -1,5 +1,6 @@
 using SkillGame.Data;
 using UltEvents;
+using UnityEditor.Graphs;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,7 @@ namespace SkillGame.UI {
         [SerializeField] UI_InventorySlot[] inventorySlots;
         [SerializeField] UI_InventorySlot previewSlot;
         [SerializeField] UltEvent<ItemData> onCurrentSelected;
+        [SerializeField] UltEvent<ItemDropContext> onItemDropped;
         [SerializeField] bool initializeOnAwake;
 
         UI_InventorySlot _currentSelected;
@@ -81,9 +83,12 @@ namespace SkillGame.UI {
         }
 
         public void RemoveCurrentSelected() {
-            if (!_currentSelected) return;
+            if (!_currentSelected || !_currentSelected.Data) return;
+            (var data, var amount) = target.RemoveItem( _currentSelected.BindedSlot );
+            var ctx = new ItemDropContext( data, amount );
+            onItemDropped?.Invoke( ctx );
+            _currentSelected = null;
             onCurrentSelected?.Invoke( null );
-            _currentSelected.RemoveAll();
         }
 
     }
