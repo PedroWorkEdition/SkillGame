@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using UnityEngine;
 
 namespace SkillGame.Utils {
@@ -32,12 +30,12 @@ namespace SkillGame.Utils {
             var val = JsonUtility.ToJson( _container = new SaveDataContainer( blocks ) );
             _container.Initialize();
             File.WriteAllText( _filePath, val );
-            Debug.Log( $"Saved succesfully at: {_filePath}" );
+            //Debug.Log( $"Saved succesfully at: {_filePath}" );
         }
 
         public static void Load() {
             if (!File.Exists( _filePath )) {
-                Debug.Log( "No save file found" );
+                //Debug.Log( "No save file found" );
                 return;
             }
             var val = File.ReadAllText( _filePath );
@@ -45,16 +43,16 @@ namespace SkillGame.Utils {
             _container.Initialize();
             foreach (var block in _container.Data)
                 _cachedData.Add( block.ID, block );
-            Debug.Log( "Save Data Loaded" );
+            //Debug.Log( "Save Data Loaded" );
         }
 
         public static void ApplyLoadedData( string id ) {
             if (!_data.ContainsKey( id )) {
-                Debug.Log( $"No data to load for {id}" );
+                //Debug.Log( $"No data to load for {id}" );
                 return;
             }
             if (_container == null) {
-                Debug.Log( "Save data not loaded" );
+                //Debug.Log( "Save data not loaded" );
                 return;
             }
             var loadedData = _container.GetBlock( id )?.TargetData;
@@ -68,7 +66,7 @@ namespace SkillGame.Utils {
         public static void RegisterData( ISaveDataProvider<IWritebleData> data ) {
             var id = data.ID;
             if (_data.ContainsKey( id )) {
-                Debug.Log( $"Already registered writeble data: '{id}'" );
+                //Debug.Log( $"Already registered writeble data: '{id}'" );
                 return;
             }
             _data.Add( id, data );
@@ -88,47 +86,8 @@ namespace SkillGame.Utils {
             _container = null;
         }
 
-    }
-
-    [Serializable]
-    internal class SaveDataContainer {
-
-        public DataBlock[] Data;
-
-        Dictionary<string, DataBlock> _map;
-
-        public SaveDataContainer( DataBlock[] blocks ) => Data = blocks;
-        public void Initialize() {
-            _map = new();
-            foreach (var block in Data)
-                _map.Add( block.ID, block );
-        }
-
-        public DataBlock GetBlock( string id ) => _map.TryGetValue( id, out var data ) ? data : null;
+        public static bool HaveSaveData() => File.Exists( _filePath );
 
     }
-
-    [Serializable]
-    internal class DataBlock {
-
-        public string TypeName, ID, TargetData;
-
-        public DataBlock( ISaveDataProvider<IWritebleData> data ) => (TypeName, ID, TargetData) = (data.TypeName, data.ID, JsonUtility.ToJson( data.GetSaveData() ));
-
-    }
-
-    public interface ISaveDataProvider<out T> where T : IWritebleData {
-
-        string ID { get; }
-        public string TypeName => typeof( T ).FullName;
-        public string AssemblyName => typeof( T ).Assembly.FullName;
-        T GetSaveData();
-        void LoadData( object data );
-
-        public Type GetWritebleDataType() => Assembly.Load( AssemblyName ).GetType( TypeName );
-
-    }
-
-    public interface IWritebleData { }
 
 }
