@@ -14,6 +14,12 @@ namespace FashionThoughts {
             input.action.canceled += ActionCanceled;
         }
 
+        private void OnDestroy() {
+            input.action.started -= ActionStarted;
+            input.action.performed -= ActionPerformed;
+            input.action.canceled -= ActionCanceled;
+        }
+
         protected virtual void OnEnable() => input.action.Enable();
         protected virtual void OnDisable() => input.action.Disable();
 
