@@ -30,31 +30,23 @@ namespace SkillGame.Utils {
             var val = JsonUtility.ToJson( _container = new SaveDataContainer( blocks ) );
             _container.Initialize();
             File.WriteAllText( _filePath, val );
-            //Debug.Log( $"Saved succesfully at: {_filePath}" );
         }
 
         public static void Load() {
-            if (!File.Exists( _filePath )) {
-                //Debug.Log( "No save file found" );
+            if (!File.Exists( _filePath )) 
                 return;
-            }
             var val = File.ReadAllText( _filePath );
             _container = JsonUtility.FromJson<SaveDataContainer>( val );
             _container.Initialize();
             foreach (var block in _container.Data)
                 _cachedData.Add( block.ID, block );
-            //Debug.Log( "Save Data Loaded" );
         }
 
         public static void ApplyLoadedData( string id ) {
-            if (!_data.ContainsKey( id )) {
-                //Debug.Log( $"No data to load for {id}" );
+            if (!_data.ContainsKey( id ))
                 return;
-            }
-            if (_container == null) {
-                //Debug.Log( "Save data not loaded" );
+            if (_container == null)
                 return;
-            }
             var loadedData = _container.GetBlock( id )?.TargetData;
             if (_cachedData.TryGetValue( id, out var block )) {
                 loadedData = block.TargetData;
@@ -65,10 +57,8 @@ namespace SkillGame.Utils {
 
         public static void RegisterData( ISaveDataProvider<IWritebleData> data ) {
             var id = data.ID;
-            if (_data.ContainsKey( id )) {
-                //Debug.Log( $"Already registered writeble data: '{id}'" );
+            if (_data.ContainsKey( id )) 
                 return;
-            }
             _data.Add( id, data );
         }
 
@@ -80,7 +70,8 @@ namespace SkillGame.Utils {
         }
 
         public static void ClearSaveFile() {
-            if (!File.Exists( _filePath )) return;
+            if (!File.Exists( _filePath )) 
+                return;
             File.Delete( _filePath );
             _cachedData.Clear();
             _container = null;

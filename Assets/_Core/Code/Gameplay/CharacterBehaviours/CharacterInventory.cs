@@ -30,6 +30,7 @@ namespace SkillGame {
             if (_weaponPrefab)
                 Destroy( _weaponPrefab );
             _equipedWeapon = weapon;
+            Character.Weapon = _equipedWeapon;
             if (_equipedWeapon.WeaponPrefab)
                 _weaponPrefab = Instantiate( _equipedWeapon.WeaponPrefab, weaponParent );
         }

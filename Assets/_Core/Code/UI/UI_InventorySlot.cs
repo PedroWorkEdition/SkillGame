@@ -50,9 +50,6 @@ namespace SkillGame.UI {
 
         void OnAmountChanged( int val ) => amount.text = string.Format( k_countFormat, val );
 
-        public void LogBeginDrag() => Debug.Log( $"Drag begun at: {name}" );
-        public void LogEndDrag() => Debug.Log( $"Drag ended at: {name}" );
-
         public void Clear() {
             if (_slot == null) return;
             RemoveAll();

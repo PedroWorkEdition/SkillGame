@@ -28,6 +28,11 @@ namespace SkillGame.UI {
                 inventorySlots[ i ].BindSlot( target.GetSlot( i ) );
         }
 
+        private void OnEnable() {
+            _currentSelected = _hover = null;
+            onCurrentSelected?.Invoke( null ); 
+        }
+
         public void CurrentHover( UI_InventorySlot slot ) => _hover = slot;
         public void RemoveHover( UI_InventorySlot slot ) {
             if (slot != _hover) return;
@@ -61,6 +66,7 @@ namespace SkillGame.UI {
         public void SetSelected( UI_InventorySlot slot ) {
             if (slot == _currentSelected) {
                 slot.Use();
+                onCurrentSelected?.Invoke( slot.Data );
                 return;
             }
             _currentSelected = slot;

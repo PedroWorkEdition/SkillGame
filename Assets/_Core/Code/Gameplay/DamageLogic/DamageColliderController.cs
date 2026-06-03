@@ -6,7 +6,7 @@ namespace SkillGame {
 
     public class DamageColliderController : MonoBehaviour {
 
-        [SerializeField] Collider targetCollider;
+        [SerializeField] Collider2D targetCollider;
         [SerializeField] bool customAttackData;
         [SerializeField] int damage;
         [SerializeField] bool useKnockback;
