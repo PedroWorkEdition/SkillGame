@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: SkillGame.Data::SkillGame.Data.ConsumableItem
   <ID>k__BackingField: b559bd666ef6067449ddb6f58bb78111
   <ItemName>k__BackingField: Health Potion
-  <Description>k__BackingField: Heals player health by 10.
+  <Description>k__BackingField: Heals player health by 1.
   <Stackable>k__BackingField: 1
   <MaxStack>k__BackingField: 99
   <ConsumedWhenUsed>k__BackingField: 1
@@ -27,4 +27,4 @@ MonoBehaviour:
     - rid: 698141543937868102
       type: {class: HealingConsumable, ns: SkillGame, asm: SkillGame}
       data:
-        amount: 10
+        amount: 1
