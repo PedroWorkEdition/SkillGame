@@ -27,8 +27,4 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null.Save
       _PersistentArguments: []
   onClear:
-    _PersistentCalls:
-    - _Target: {fileID: 0}
-      _MemberName: SkillGame.Utils.PersistentSystem, SkillGame.Utils, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null.Save
-      _PersistentArguments: []
+    _PersistentCalls: []
