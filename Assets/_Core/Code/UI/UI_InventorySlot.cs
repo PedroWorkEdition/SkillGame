@@ -28,7 +28,14 @@ namespace SkillGame.UI {
         public void SetData( ItemData data, int amount ) {
             if (_slot == null && localSlot)
                 BindSlot( new( null ) );
-            _slot.AddOrSet( data, amount );
+            _slot.Set( data, amount );
+            gameObject.SetActive( true );
+        }
+
+        public void AddData( int amount ) {
+            if (_slot == null && localSlot)
+                BindSlot( new( null ) );
+            _slot.Add( amount );
             gameObject.SetActive( true );
         }
 
@@ -47,6 +54,7 @@ namespace SkillGame.UI {
         }
 
         public void SetData( UI_InventorySlot slot ) => SetData( slot._slot.Item, slot._slot.Count );
+        public void AddData( UI_InventorySlot slot ) => AddData( slot._slot.Count );
 
         private void ItemChanged( ItemData data ) {
             icon.gameObject.SetActive( data );

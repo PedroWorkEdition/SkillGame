@@ -58,12 +58,16 @@ namespace SkillGame.Data {
 
         public InventorySlot GetSlot( int index ) => _slots.IsInBounds( index ) ? _slots[ index ] : null;
 
-        public void Clear() { 
+        public void Clear() {
+            if (!IsInitialized) return;
             _slots.ForEach( slot => slot.Clear() );
             onClear?.Invoke();
+            IsInitialized = false;
         }
 
-        public void Dispose() { }
+        public void Dispose() {
+            Holder = null;
+        }
 
     }
 
@@ -108,11 +112,13 @@ namespace SkillGame.Data {
             }
             if (Item == data) {
                 if (!Item.Stackable || Count >= Item.MaxStack) return false;
-                var tempCount = Count + count;
-                Count = Mathf.Min( tempCount, Item.MaxStack );
+                Count = Mathf.Min( Count + count, Item.MaxStack );
+                return true;
             }
-            return true;
+            return false;
         }
+
+        public void Add( int count ) => Count = Mathf.Min( Count + count, Item.MaxStack );
 
         public void Set( ItemData data, int count ) => (Item, Count) = (data, count);
 

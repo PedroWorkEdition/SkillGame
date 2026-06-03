@@ -16,6 +16,8 @@ namespace SkillGame {
 
         public string ID => inventory.ID;
 
+        void OnDestroy() => inventory.Dispose();
+
         internal override void Initialize( Character source ) {
             base.Initialize( source );
             inventory.Initialize( this );

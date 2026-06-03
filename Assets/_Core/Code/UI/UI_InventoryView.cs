@@ -55,7 +55,7 @@ namespace SkillGame.UI {
                 _hover.SetData( previewSlot );
             } else {
                 var maxDiff = _hover.Data.MaxStack - _hover.Count;
-                _hover.SetData( previewSlot );
+                _hover.AddData( previewSlot );
                 previewSlot.RemoveAmount( maxDiff );
                 _currentSelected.SetData( previewSlot );
             }
