@@ -115,7 +115,7 @@ namespace SkillGame.Data {
             if (!Item || count < 1) return default;
             Count -= count;
             var item = Item;
-            if (Count < 0) {
+            if (Count <= 0) {
                 Item = null;
                 count += Count;
                 Count = 0;
