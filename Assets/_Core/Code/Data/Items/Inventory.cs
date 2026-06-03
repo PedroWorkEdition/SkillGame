@@ -1,6 +1,7 @@
 using HaroLibs;
 using SkillGame.Utils;
 using System;
+using UltEvents;
 using UnityEngine;
 
 namespace SkillGame.Data {
@@ -10,6 +11,8 @@ namespace SkillGame.Data {
 
         [field: SerializeField, AutoGUID] public string ID { get; private set; }
         [field: SerializeField] public int Size { get; private set; }
+        [SerializeField] UltEvent<ItemData> onItemAdded, onItemRemoved;
+        [SerializeField] UltEvent onClear;
 
         [NonSerialized] InventorySlot[] _slots;
         public IInventoryHolder Holder { get; private set; }
@@ -29,22 +32,30 @@ namespace SkillGame.Data {
         }
 
         public bool AddItem( ItemData item, int amount = 1 ) {
-            for (int i = 0; i < _slots.Length; i++) 
-                if (_slots[ i ].AddOrSet( item, amount ))
+            for (int i = 0; i < _slots.Length; i++)
+                if (_slots[ i ].AddOrSet( item, amount )) {
+                    onItemAdded?.Invoke( item );
                     return true;
+                }
             return false;
         }
 
         public (ItemData data, int amount) RemoveItem( ItemData item, int amount = 1 ) {
             for (int i = 0; i < _slots.Length; i++)
-                if (_slots[ i ].Item == item)
-                    return _slots[ i ].Remove( amount );
+                if (_slots[ i ].Item == item) {
+                    var result = _slots[ i ].Remove( amount );
+                    onItemRemoved?.Invoke( item );
+                    return result;
+                }
             return default;
         }
 
         public InventorySlot GetSlot( int index ) => _slots.IsInBounds( index ) ? _slots[ index ] : null;
 
-        public void Clear() => _slots.ForEach( slot => slot.Clear() );
+        public void Clear() { 
+            _slots.ForEach( slot => slot.Clear() );
+            onClear?.Invoke();
+        }
 
         public void Dispose() { }
 
